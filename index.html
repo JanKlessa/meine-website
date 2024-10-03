@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Lieblingsfilme</title>
+    <style>
+        /* Gesamtseite */
+        body {
+            background: url('https://media.giphy.com/media/3o6gDUfmjGOPlZRave/giphy.gif') no-repeat center center fixed;
+            background-size: cover;  /* Hintergrundbild auf die gesamte Seite skalieren */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Überschrift */
+        h1 {
+            color: #fff;  /* Weiße Schrift für bessere Lesbarkeit */
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Absatz */
+        p {
+            font-size: 18px;
+            text-align: center;
+            color: #fff;  /* Weiße Schrift */
+        }
+
+        /* Liste */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        ul li {
+            font-size: 20px;
+            margin: 10px 0;
+            transition: color 0.3s ease, font-size 0.3s ease;
+            color: #fff;  /* Weiße Schrift */
+        }
+
+        ul li:hover {
+            color: #e74c3c; /* Rot bei Hover */
+            font-size: 24px; /* Größer bei Hover */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);  /* Schwarzer, transparenter Hintergrund */
+            color: white;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Animation für den Button */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #3498db; /* Blau bei Hover */
+            animation: shake 0.5s ease; /* Schüttel-Effekt */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Willkommen auf meiner Webseite!</h1>
+
+    <p>Hier sind einige meiner Lieblingsfilme:</p>
+
+    <ul id="filmliste">
+        <li>Matrix</li>
+        <li>Inception</li>
+        <li>Interstellar</li>
+        <li>The Dark Knight</li>
+    </ul>
+
+    <!-- Button zum Hinzufügen eines neuen Films -->
+    <button onclick="filmHinzufuegen()">Neuen Film hinzufügen</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Erstellt von Jan</p>
+    </footer>
+
+    <!-- JavaScript Code -->
+    <script>
+        function filmHinzufuegen() {
+            // Neuen Listeneintrag erstellen
+            let neuerFilm = document.createElement('li');
+            neuerFilm.textContent = 'Der Herr der Ringe'; // Der neue Film
+
+            // Die Liste der Filme auswählen und den neuen Film hinzufügen
+            document.getElementById('filmliste').appendChild(neuerFilm);
+        }
+    </script>
+
+</body>
+</html>
