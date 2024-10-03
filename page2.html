@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love or Obsession?</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 150px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .button {
+            background-color: #ff1493;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        .button:hover {
+            background-color: #ff69b4;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Is this still love or is this obsession?</h1>
+
+    <!-- Antwort-Textbox -->
+    <textarea id="obsessionAnswer" placeholder="Type your answer here..."></textarea>
+
+    <!-- Sende die Antwort per POST-Anfrage an den Server -->
+    <button class="button" onclick="sendEmail()">Submit</button>
+
+    <script>
+        function sendEmail() {
+            // Hole die Antworten aus der Textarea und der URL (Love Scale)
+            const answer = document.getElementById('obsessionAnswer').value;
+            const loveValue = new URLSearchParams(window.location.search).get('love');
+
+            // Verwende fetch(), um die POST-Anfrage an den Server zu senden
+            fetch('http://localhost:3000/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    loveScale: loveValue,
+                    obsessionAnswer: answer
+                })
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    alert('Deine Antwort wurde erfolgreich gesendet!');
+                } else {
+                    alert('Es gab einen Fehler beim Senden der Antwort.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Es gab einen Fehler beim Senden der Antwort.');
+            });
+        }
+    </script>
+
+</body>
+</html>
